@@ -53,6 +53,8 @@ rt-agentic-ai-cert-week2/
    OPENAI_API_KEY=your-api-key-here
    ```
 
+   You can get your API key from [OpenAI](https://platform.openai.com/api-keys).
+
 4. **Run the examples:**
    ```bash
    cd code
