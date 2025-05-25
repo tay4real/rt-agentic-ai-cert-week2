@@ -5,7 +5,6 @@ from typing import Optional, Dict, Any
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
 
-# Add the parent directory to the path so we can import utils and paths
 sys.path.append(str(Path(__file__).parent.parent))
 
 from utils import load_publication, load_yaml_config, load_env, save_text_to_file
@@ -81,18 +80,14 @@ def run_prompt_example(
         print("✗ LLM response was empty or failed.")
 
 
-def main(prompt_config_key: str = "linkedin_post_prompt_cfg") -> None:
+def main(prompt_config_key: str) -> None:
     """Main entry point to run a modular prompt example using configuration.
 
     Args:
         prompt_config_key: The key of the prompt configuration to use.
     """
-    print("=" * 80)
-    print("LESSON 1: THE MODULAR APPROACH TO PROMPT ENGINEERING")
-    print("=" * 80)
-    print("Demonstrating how to build prompts systematically using modular components")
-
     try:
+        print("=" * 80)
         # Load environment variables
         print("\nLoading environment variables...")
         load_env()
@@ -126,10 +121,8 @@ def main(prompt_config_key: str = "linkedin_post_prompt_cfg") -> None:
             app_config=app_config,  # Pass app_config here
         )
 
-        print(f"\n{'='*80}")
-        print("LESSON COMPLETE!")
-        print("You've seen how modular prompt components can be systematically")
-        print("combined to create more effective and reliable prompts.")
+        print(f"\n{'-'*80}")
+        print("TASK COMPLETE!")
         print("=" * 80)
 
     except Exception as e:
@@ -139,6 +132,8 @@ def main(prompt_config_key: str = "linkedin_post_prompt_cfg") -> None:
 
 if __name__ == "__main__":
 
-    prompt_cfg_key = "linkedin_post_prompt_cfg"
+    # Define the prompt configuration key to use
+    # You can change this to any key defined in your `prompt_config.yaml` file.
+    prompt_cfg_key = "summarization_prompt_cfg5"
 
     main(prompt_config_key=prompt_cfg_key)
