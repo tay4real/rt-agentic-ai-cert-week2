@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 import os
+from typing import Optional, Dict, Any
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
 
@@ -12,17 +13,18 @@ from paths import PROMPT_CONFIG_FPATH, OUTPUTS_DIR, APP_CONFIG_FPATH
 from prompt_builder import build_prompt_from_config
 
 
-def invoke_llm(prompt, model="gpt-4o-mini", temperature=0.0):
-    """
-    Simple LLM invocation function.
+def invoke_llm(
+    prompt: str, model: str = "gpt-4o-mini", temperature: float = 0.0
+) -> Optional[str]:
+    """Calls the LLM with a prompt and returns the response.
 
     Args:
-        prompt (str): The prompt to send to the LLM
-        model (str): The model to use
-        temperature (float): Temperature for response generation
+        prompt: The prompt to send to the LLM.
+        model: The LLM model to use.
+        temperature: Sampling temperature.
 
     Returns:
-        str: The LLM's response content
+        The LLM's response content, or None if an error occurs.
     """
     try:
         llm = ChatOpenAI(
@@ -37,17 +39,20 @@ def invoke_llm(prompt, model="gpt-4o-mini", temperature=0.0):
 
 
 def run_prompt_example(
-    all_prompts_config, prompt_config_key, publication_content, model_name, app_config
-):
-    """
-    Run a single prompt example.
+    all_prompts_config: Dict[str, Any],
+    prompt_config_key: str,
+    publication_content: str,
+    model_name: str,
+    app_config: Dict[str, Any],
+) -> None:
+    """Builds a prompt, runs it with the LLM, and saves the response.
 
     Args:
-        all_prompts_config (dict): Configuration for all prompts
-        prompt_config_key (str): Key for the prompt configuration
-        publication_content (str): The publication text
-        model_name (str): The LLM model to use
-        app_config (dict): Application configuration including reasoning strategies
+        all_prompts_config: Dictionary of all available prompt configurations.
+        prompt_config_key: Key identifying the specific prompt config to use.
+        publication_content: Content to summarize or process.
+        model_name: Name of the LLM to use.
+        app_config: Application-level config (e.g. reasoning strategies).
     """
     # Build the prompt
     if prompt_config_key not in all_prompts_config:
@@ -76,9 +81,11 @@ def run_prompt_example(
         print("✗ LLM response was empty or failed.")
 
 
-def main(prompt_config_key:str="linkedin_post_prompt_cfg"):
-    """
-    Main function demonstrating modular prompt engineering.
+def main(prompt_config_key: str = "linkedin_post_prompt_cfg") -> None:
+    """Main entry point to run a modular prompt example using configuration.
+
+    Args:
+        prompt_config_key: The key of the prompt configuration to use.
     """
     print("=" * 80)
     print("LESSON 1: THE MODULAR APPROACH TO PROMPT ENGINEERING")
@@ -109,14 +116,14 @@ def main(prompt_config_key:str="linkedin_post_prompt_cfg"):
         if prompt_config_key not in all_prompts_config:
             print(f"Error: Prompt config key '{prompt_config_key}' not found.")
             return
-        
+
         print(f"\nRunning prompt example: {prompt_config_key}")
         run_prompt_example(
             all_prompts_config=all_prompts_config,
             prompt_config_key=prompt_config_key,
             publication_content=publication_content,
             model_name=model_name,
-            app_config=app_config  # Pass app_config here
+            app_config=app_config,  # Pass app_config here
         )
 
         print(f"\n{'='*80}")

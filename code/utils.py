@@ -2,20 +2,20 @@ import os
 import yaml
 from dotenv import load_dotenv
 from pathlib import Path
+from typing import Union, Optional
 
 from paths import PUBLICATION_FPATH, ENV_FPATH
 
 
 def load_publication():
-    """
-    Load the VAE publication markdown file from the data directory.
+    """Loads the publication markdown file.
 
     Returns:
-        str: Content of the publication as a text string
+        Content of the publication as a string.
 
     Raises:
-        FileNotFoundError: If the publication file doesn't exist
-        IOError: If there's an error reading the file
+        FileNotFoundError: If the file does not exist.
+        IOError: If there's an error reading the file.
     """
     file_path = Path(PUBLICATION_FPATH)
 
@@ -31,20 +31,19 @@ def load_publication():
         raise IOError(f"Error reading publication file: {e}") from e
 
 
-def load_yaml_config(file_path):
-    """
-    Load a YAML configuration file.
+def load_yaml_config(file_path: Union[str, Path]) -> dict:
+    """Loads a YAML configuration file.
 
     Args:
-        file_path (str or Path): Path to the YAML file to load
+        file_path: Path to the YAML file.
 
     Returns:
-        dict: Parsed YAML content as a dictionary
+        Parsed YAML content as a dictionary.
 
     Raises:
-        FileNotFoundError: If the YAML file doesn't exist
-        yaml.YAMLError: If there's an error parsing the YAML
-        IOError: If there's an error reading the file
+        FileNotFoundError: If the file does not exist.
+        yaml.YAMLError: If there's an error parsing YAML.
+        IOError: If there's an error reading the file.
     """
     file_path = Path(file_path)
 
@@ -62,7 +61,12 @@ def load_yaml_config(file_path):
         raise IOError(f"Error reading YAML file: {e}") from e
 
 
-def load_env():
+def load_env() -> None:
+    """Loads environment variables from a .env file and checks for required keys.
+
+    Raises:
+        AssertionError: If required keys are missing.
+    """
     # Load environment variables from .env file
     load_dotenv(ENV_FPATH, override=True)
 
@@ -72,17 +76,18 @@ def load_env():
     assert api_key, "'api_key' has not been loaded or is not set in the .env file."
 
 
-def save_text_to_file(text, filepath, header=None):
-    """
-    Save text content to a file.
+def save_text_to_file(
+    text: str, filepath: Union[str, Path], header: Optional[str] = None
+) -> None:
+    """Saves text content to a file, optionally with a header.
 
     Args:
-        text (str): The text content to save
-        filepath (str or Path): Path where to save the file
-        header (str): Optional header to add at the top of the file
+        text: The content to write.
+        filepath: Destination path for the file.
+        header: Optional header text to include at the top.
 
     Raises:
-        IOError: If there's an error writing the file
+        IOError: If the file cannot be written.
     """
     try:
         filepath = Path(filepath)
