@@ -111,6 +111,6 @@ linkedin_post_prompt_cfg:
     - Don't use em dashes (—) or semicolons
     - Favor short, clear sentences over long compound ones
     - Use emojis sparingly - no more than 3 if they add value
-    - Use bold text strategically to emphasize key points and draw attention
+    - Do NOT use markdown formatting (e.g. **bold**). Use plain text and unicode bold as needed.
   goal: |
     Generate high engagement and drive the audience to read the full publication.
