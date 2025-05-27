@@ -27,7 +27,9 @@ def invoke_llm(
     """
     try:
         llm = ChatOpenAI(
-            model=model, temperature=temperature, api_key=os.getenv("OPENAI_API_KEY")
+            model_name=model,
+            temperature=temperature,
+            api_key=os.getenv("OPENAI_API_KEY"),
         )
         message = HumanMessage(content=prompt)
         response = llm.invoke([message])
