@@ -18,7 +18,8 @@ rt-agentic-ai-cert-week2/
 │   ├── config/
 │   │   ├── config.yaml          # App config with reasoning strategies
 │   │   └── prompt_config.yaml   # Prompt configurations for examples
-│   ├── lesson_1_and_2.py        # Main script demonstrating concepts
+│   ├── lesson_1a_and_ab.py      # Main script for lesson 1
+│   ├── lesson_2.py      # Main script for lesson 2
 │   ├── paths.py                 # File path configurations
 │   ├── prompt_builder.py        # Modular prompt construction functions
 │   └── utils.py                 # Utility functions
@@ -48,6 +49,7 @@ rt-agentic-ai-cert-week2/
 3. **Set up your OpenAI API key:**
 
    Create a .env file in the root directory and add your OpenAI API key.
+   See [.env.example](https://github.com/readytensor/rt-agentic-ai-cert-week2/blob/main/.env.example) file.
 
    ```
    OPENAI_API_KEY=your-api-key-here
@@ -55,6 +57,7 @@ rt-agentic-ai-cert-week2/
 
    You can get your API key from [OpenAI](https://platform.openai.com/api-keys).
 
+   
 4. **Run the examples:**
    ```bash
    cd code
