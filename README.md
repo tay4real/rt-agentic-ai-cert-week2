@@ -1,14 +1,47 @@
 # Ready Tensor Agentic AI Certification - Week 2
 
-This repository contains the practical code and exercises for **Week 2** of the Ready Tensor Agentic AI Certification program, covering foundational prompt engineering concepts that are essential for building effective agentic AI systems.
+This repository contains the lessons, practical code and exercises for **Week 2** of the Ready Tensor Agentic AI Certification program, covering foundational prompt engineering concepts that are essential for building effective agentic AI systems.
 
 ## What You'll Learn
 
-**Lesson 1 - Modular Prompt Engineering:** Learn to build prompts systematically using reusable components (role, constraints, style, goals) rather than ad-hoc approaches.
+- How to build **modular prompts** for better clarity and reuse
+- When and how to apply **reasoning techniques** like CoT, ReAct, and Self-Ask
+- Strategies for **structured output parsing**
+- Principles of **function chaining** in AI workflows
+- How **vector databases** enable semantic search
+- Foundations of **Retrieval-Augmented Generation (RAG)**
 
-**Lesson 2 - Advanced "Reasoning" Techniques:** Master three powerful techniques—Chain of Thought, ReAct, and Self-Ask—that dramatically improve LLM performance on complex tasks.
+---
 
-In this repository, you can experiment with the modular prompt builder, test different reasoning strategies, and see how systematic prompt engineering creates more reliable and effective AI interactions.
+## Lessons in This Repository
+
+### 1a. Building Prompts for Agentic AI Systems
+
+Learn how to design effective prompts using modular components — instruction, tone, role, constraints — and how to iteratively refine prompts for clarity and consistency.
+
+### 1b. Prompt Engineering: Advanced Reasoning Techniques
+
+Covers three powerful techniques — **Chain of Thought**, **ReAct**, and **Self-Ask** — and shows how to incorporate them into your modular prompt framework.
+
+### 2. From Text to Data: Hands-On LLM Output Parsing
+
+Explore structured output generation from LLMs using prompt formatting and model-native methods, with tools like **Pydantic** and **LangChain**.
+
+### 3. Function Chaining for Intelligent Pipelines
+
+Understand how breaking down tasks into smaller functions enables composable, robust AI systems, and how to structure chains for clarity and reliability.
+
+### 4a. Vector Databases: Finding Meaning, Not Just Keywords
+
+Get introduced to vector search and how embeddings power semantic retrieval in intelligent systems.
+
+### 4b. Vector Databases: Building a Semantic Retrieval System
+
+Build a working pipeline with **ChromaDB**, embeddings, and chunked documents — the foundation of modern RAG workflows.
+
+### 5. Introduction to RAG (Retrieval Augmented Generation)
+
+Learn why RAG outperforms fine-tuning for most real-world scenarios, and how it enables domain-specific, knowledge-grounded assistants.
 
 ## Repository Structure
 
@@ -25,6 +58,8 @@ rt-agentic-ai-cert-week2/
 │   └── utils.py                 # Utility functions
 ├── data/
 │   └── vae-publication.md       # Sample publication for exercises
+├── lessons/
+│   └── lesson-wk2-*             # Markdown files and visuals for each lesson
 ├── outputs/                     # Generated prompts and LLM responses
 ├── .env.template                # Environment variables template
 ├── requirements.txt             # Python dependencies
@@ -57,7 +92,6 @@ rt-agentic-ai-cert-week2/
 
    You can get your API key from [OpenAI](https://platform.openai.com/api-keys).
 
-   
 4. **Run the examples:**
    ```bash
    cd code
@@ -67,19 +101,23 @@ rt-agentic-ai-cert-week2/
 
 ## Key Features
 
-- **Modular Prompt Builder:** Construct prompts from reusable components defined in YAML configuration
-- **Reasoning Strategy Integration:** Easily swap between Chain of Thought, ReAct, and Self-Ask techniques
-- **Real Examples:** See prompt engineering concepts applied to publication summarization and LinkedIn post creation
-- **Output Generation:** Automatically save constructed prompts and LLM responses for comparison
+- 🧩 **Modular Prompt Builder**
+  Construct prompts from reusable components like role, constraints, tone, and goals.
 
-## How It Works
+- 🧠 **Reasoning Techniques**
+  Integrate CoT, ReAct, and Self-Ask patterns into your prompts with a single config line.
 
-The `prompt_builder.py` module takes YAML configurations and builds structured prompts. You can:
+- 🛠️ **Hands-On Output Parsing**
+  Generate and validate structured output using both prompt-based and model-native methods.
 
-- Mix and match prompt components (role, constraints, style, goals)
-- Add reasoning strategies with a single configuration line
-- Generate prompts for different tasks using the same framework
-- Compare outputs to see the impact of different prompt designs
+- 🔗 **Function Chaining Framework**
+  Chain modular steps to build robust, maintainable AI pipelines.
+
+- 🔍 **Vector Search Implementation**
+  Build a retrieval system using real embeddings and ChromaDB.
+
+* 🔍 **Intro to RAG**
+  Introduction to Retrieval-Augmented Generation.
 
 ## License
 
