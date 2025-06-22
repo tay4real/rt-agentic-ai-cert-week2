@@ -1,6 +1,6 @@
 # Ready Tensor Agentic AI Certification - Week 2
 
-This repository contains the lessons, practical code and exercises for **Week 2** of the Ready Tensor Agentic AI Certification program, covering foundational prompt engineering concepts that are essential for building effective agentic AI systems.
+This repository contains the lessons, practical code and exercises for **Week 2** of the [Agentic AI Developer Certification Program](https://app.readytensor.ai/publications/HrJ0xWtLzLNt) by Ready Tensor, covering foundational prompt engineering concepts that are essential for building effective agentic AI systems.
 
 ## What You'll Learn
 
