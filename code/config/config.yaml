@@ -1,5 +1,11 @@
-llm: "gpt-4o-mini"
+# Available models:
 
+# - gpt-4o-mini
+# - gemini-1.5-flash
+# - gemini-1.5-pro
+# - llama3-8b-8192
+
+llm: "gpt-4o-mini"
 reasoning_strategies:
   CoT: |
     Use this systematic approach to provide your response:

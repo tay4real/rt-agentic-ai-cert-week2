@@ -1,10 +1,11 @@
 import os
-from paths import OUTPUTS_DIR
+from paths import OUTPUTS_DIR, APP_CONFIG_FPATH
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
-from langchain_openai import ChatOpenAI
+from llms import get_llm
 from utils import load_publication, save_text_to_file
 from langchain.output_parsers.pydantic import PydanticOutputParser
+from utils import load_yaml_config
 
 load_dotenv()
 
@@ -36,7 +37,7 @@ def no_structured_output(model: str = "gpt-4o-mini"):
         publication_content=publication_content
     )
 
-    llm = ChatOpenAI(model_name=model, temperature=0.0)
+    llm = get_llm(model)
 
     response = llm.invoke(prompt)
 
@@ -85,7 +86,7 @@ def with_prompting_to_structure_output(model: str = "gpt-4o-mini"):
         publication_content=publication_content
     )
 
-    llm = ChatOpenAI(model_name=model, temperature=0.0)
+    llm = get_llm(model)
 
     response = llm.invoke(prompt)
 
@@ -120,7 +121,7 @@ def with_output_parser(model: str = "gpt-4o-mini"):
     {format_instructions}
     """
 
-    llm = ChatOpenAI(model_name=model, temperature=0.0)
+    llm = get_llm(model)
 
     output_parser = PydanticOutputParser(pydantic_object=Entities)
 
@@ -164,7 +165,7 @@ def model_native_structured_output(model: str = "gpt-4o-mini"):
         publication_content=publication_content
     )
 
-    llm = ChatOpenAI(model_name=model, temperature=0.0).with_structured_output(Entities)
+    llm = get_llm(model).with_structured_output(Entities)
 
     response = llm.invoke(prompt)
 
@@ -182,7 +183,10 @@ def model_native_structured_output(model: str = "gpt-4o-mini"):
 
 if __name__ == "__main__":
 
-    # no_structured_output()
-    # with_prompting_to_structure_output()
-    # with_output_parser()
-    model_native_structured_output()
+    config = load_yaml_config(APP_CONFIG_FPATH)
+    model = config.get("llm", "gpt-4o-mini")
+
+    # no_structured_output(model)
+    # with_prompting_to_structure_output(model)
+    # with_output_parser(model)
+    model_native_structured_output(model)

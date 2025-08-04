@@ -1,8 +1,8 @@
+import os
 import sys
 from pathlib import Path
-import os
 from typing import Optional, Dict, Any
-from langchain_openai import ChatOpenAI
+from llms import get_llm
 from langchain_core.messages import HumanMessage
 
 sys.path.append(str(Path(__file__).parent.parent))
@@ -26,11 +26,7 @@ def invoke_llm(
         The LLM's response content, or None if an error occurs.
     """
     try:
-        llm = ChatOpenAI(
-            model_name=model,
-            temperature=temperature,
-            api_key=os.getenv("OPENAI_API_KEY"),
-        )
+        llm = get_llm(model)
         message = HumanMessage(content=prompt)
         response = llm.invoke([message])
         return response.content
@@ -93,7 +89,7 @@ def main(prompt_config_key: str) -> None:
         # Load environment variables
         print("\nLoading environment variables...")
         load_env()
-        print("✓ OpenAI API key loaded")
+        print("✓ API key loaded")
 
         # Load the publication content
         print("Loading publication content...")
