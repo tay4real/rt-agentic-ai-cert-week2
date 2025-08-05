@@ -15,9 +15,9 @@ This repository contains the lessons, practical code and exercises for **Week 2*
 
 ## Lessons in This Repository
 
-### 0. Getting Started: Free APIs for Prompt Engineering
+### 0. Getting Started: Free APIs and Local LLMs
 
-Learn how to get started without paying for OpenAI by using free alternatives like Groq and Google Gemini, including step-by-step setup guides and LangChain integration.
+Set up your environment with free LLM options — including cloud APIs like Groq and Google Gemini, or local models via Ollama — so you can follow the course without hitting cost barriers.
 
 ### 1a. Building Prompts for Agentic AI Systems
 
@@ -88,19 +88,20 @@ rt-agentic-ai-cert-week2/
 3. **Set up your API key:**
 
    Create a .env file in the root directory and add at least one API key. **You need at least one key** from OpenAI, Groq, or Google to run the examples.
-   
+
    See [.env.example](https://github.com/readytensor/rt-agentic-ai-cert-week2/blob/main/.env.example) file for the complete template.
 
    ```bash
    # Choose at least one (you don't need all three)
    OPENAI_API_KEY=your-openai-key-here
-   GROQ_API_KEY=your-groq-key-here  
+   GROQ_API_KEY=your-groq-key-here
    GOOGLE_API_KEY=your-google-key-here
    ```
 
    **Get your free API key from:**
+
    - **OpenAI** (paid): [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
-   - **Groq** (free): [console.groq.com](https://console.groq.com) 
+   - **Groq** (free): [console.groq.com](https://console.groq.com)
    - **Google Gemini** (free): [makersuite.google.com](https://makersuite.google.com)
 
    > 💡 **No budget for APIs?** Check out our [Free API Setup Guide](lessons/lesson-wk2-l0/w2-l0-getting-started-free-apis.md) for using Groq and Google's free tiers!
