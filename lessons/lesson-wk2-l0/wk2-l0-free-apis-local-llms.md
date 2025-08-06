@@ -407,81 +407,51 @@ You get real-time responses from capable open models — perfect for learning an
  > 🧪 Try a fun test prompt like: `"Explain agentic AI like you're a movie trailer narrator."`
  
  ---
- 
- <!-- RT_DIVIDER -->
- 
- # When to Use Which Option
- 
- Not sure which path to pick? Here’s the good news: **they all work** — and you can switch at any time.
- 
- If you want something fast and cloud-hosted, start with **Groq** or **Gemini**. Prefer full control or want to work offline? Try **Ollama**. You’re not locked in — LangChain makes it easy to change providers without rewriting your code.
- 
- |           | **Groq**           | **Gemini**        | **Ollama**            |
- | --------- | ------------------ | ----------------- | --------------------- |
- | Setup     | Easy cloud setup   | Easy cloud setup  | Requires install      |
- | Speed     | Very fast          | Fast              | Varies by hardware    |
- | Cost      | Free tier          | Free tier         | Fully free (local)    |
- | Limits    | Rate caps apply    | Rate caps apply   | No rate limits        |
- | Offline?  | ❌                  | ❌                 | ✅                     |
- | Great for | Prototyping, speed | Reasoning, coding | Privacy, full control |
- 
- There’s no single “best” choice — just pick what fits your system and comfort level. You can always switch later.
- 
- ---
- 
- <!-- RT_DIVIDER -->
- 
- 
- :::info{title="Info"}
- # OpenAI's GPT-OSS Models: Now Available for Local Use
- 
- OpenAI recently released open-source versions of their models, known as **GPT-OSS**. These include two models like **gpt-oss-20b** and **gpt-oss-120b** that you can now run locally using Ollama.
- 
- **What makes GPT-OSS special:**
- - **Fully open-weight** - you can download and modify them freely
- - **High performance** - built on OpenAI's latest architecture
- - **Local deployment** - run them on your own hardware with Ollama
- 
- **Using GPT-OSS with Ollama:**
- ```bash
- # Download the 20B model (requires ~16GB RAM)
- ollama pull gpt-oss:20b
- 
- # Or the larger 120B model (requires ~60GB RAM)
- ollama pull gpt-oss:120b
- ```
- 
- **Reality check:** While these models offer cutting-edge capabilities, they require substantial hardware resources that are likely beyond most learning setups. The 20B model needs around 16GB of RAM, and the 120B model needs approximately 60GB - making cloud APIs more practical for most users in this course.
- 
- However, if you have access to high-end workstations or servers, these models represent an exciting opportunity to run OpenAI-quality models completely locally and privately.
- :::
- 
- ---
- 
- <!-- RT_DIVIDER -->
- 
- # Final Notes
- 
- You’re now ready to start your journey building with agentic AI — no cost barriers, no complicated setup.
- 
- As you work through the lessons and projects, any of these LLM options will work. You can stick with one, or try more than one to see what fits your style.
- 
- Most importantly, you can learn and experiment **without burning through tokens or money** — it’s easy to stay within the free tiers or run models locally.
- 
- And if you ever get stuck, we’re just a message away on [Discord](https://discord.com/invite/EsVfxNdUTR).
- 
- ---
- 
- **Next up:** we’ll kick off your hands-on journey with prompt engineering — the core skill behind making LLMs useful, flexible, and goal-driven. Now that your setup is ready, it’s time to start building.
- 
- 
- <!-- RT_DIVIDER -->
- 
- ---
- 
- [🏠 Home - All Lessons](https://app.readytensor.ai/hubs/ready_tensor_certifications)  
- 
- [⬅️ Previous - Agents Vs. Workflows](https://app.readytensor.ai/publications/Xq3L2HSWLPou) 
- [➡️ Next - Building Prompts](https://app.readytensor.ai/publications/36Hu3DC3TLdu) 
- 
- ---
+
+--DIVIDER--
+
+# When to Use Which Option
+
+Not sure which path to pick? Here’s the good news: **they all work** — and you can switch at any time.
+
+If you want something fast and cloud-hosted, start with **Groq** or **Gemini**. Prefer full control or want to work offline? Try **Ollama**. You’re not locked in — LangChain makes it easy to change providers without rewriting your code.
+
+|           | **Groq**           | **Gemini**        | **Ollama**            |
+| --------- | ------------------ | ----------------- | --------------------- |
+| Setup     | Easy cloud setup   | Easy cloud setup  | Requires install      |
+| Speed     | Very fast          | Fast              | Varies by hardware    |
+| Cost      | Free tier          | Free tier         | Fully free (local)    |
+| Limits    | Rate caps apply    | Rate caps apply   | No rate limits        |
+| Offline?  | ❌                 | ❌                | ✅                    |
+| Great for | Prototyping, speed | Reasoning, coding | Privacy, full control |
+
+There’s no single “best” choice — just pick what fits your system and comfort level. You can always switch later.
+
+---
+
+--DIVIDER--
+
+# Final Notes
+
+You’re now ready to start your journey building with agentic AI — no cost barriers, no complicated setup.
+
+As you work through the lessons and projects, any of these LLM options will work. You can stick with one, or try more than one to see what fits your style.
+
+Most importantly, you can learn and experiment **without burning through tokens or money** — it’s easy to stay within the free tiers or run models locally.
+
+And if you ever get stuck, we’re just a message away on [Discord](https://discord.com/invite/EsVfxNdUTR).
+
+---
+
+**Next up:** we’ll kick off your hands-on journey with prompt engineering — the core skill behind making LLMs useful, flexible, and goal-driven. Now that your setup is ready, it’s time to start building.
+
+--DIVIDER--
+
+---
+
+[🏠 Home - All Lessons](https://app.readytensor.ai/hubs/ready_tensor_certifications)
+
+[⬅️ Previous - Agents Vs. Workflows](https://app.readytensor.ai/publications/Xq3L2HSWLPou)
+[➡️ Next - Building Prompts](https://app.readytensor.ai/publications/36Hu3DC3TLdu)
+
+---
