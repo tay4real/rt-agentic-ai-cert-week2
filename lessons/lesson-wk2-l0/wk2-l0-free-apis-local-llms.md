@@ -311,6 +311,94 @@ This is a great option if:
 
 --DIVIDER--
 
+:::tip{title="Tip"}
+<h4> How to Estimate the Total Memory Needed for a Model </h4>
+
+The total GPU memory required to run a model is the sum of:
+
+$$
+\text{Total Memory} \approx \text{Model Weights Size} + \text{Activation Size}
+$$
+---
+
+1. Model Weights Size
+
+This is the memory needed to store the model’s parameters.
+$$
+\text{weights\_size\_bytes} = \text{num\_parameters} \times \text{bytes\_per\_parameter}
+$$
+
+- num_parameters: Total number of parameters (e.g., 1B, 7B, 20B).
+- bytes_per_parameter: Depends on precision (FP32 = 4 bytes, FP16 = 2 bytes, Q8 = 1 byte, Q4 = 0.5 byte).
+
+---
+
+2. Activation Size
+
+Activations are the intermediate outputs stored during the forward pass.
+
+$$ \text{activation\_size\_bytes} \approx \text{num\_layers} \times \text{batch\_size} \times \text{seq\_length} \times \text{hidden\_size} \times \text{bytes\_per\_parameter} $$
+
+- num_layers: Number of transformer layers.
+- batch_size: Number of sequences processed at once.
+- seq_length: Number of tokens in each sequence.
+- hidden_size: Size of the hidden vector in each layer.
+
+---
+
+3. Quantization Factor
+
+Quantization reduces the memory needed for weights by storing parameters in fewer bits.
+
+Adjusted formula for weights with quantization:
+$$ \text{weights\_size\_bytes} = \frac{\text{num\_parameters}}{\text{quantization\_factor}} \times \text{bytes\_per\_parameter} $$
+
+- Quantization factor:
+- FP32 → 1 (no reduction)
+- Q8 → 2 (50% smaller than FP16, 75% smaller than FP32)
+- Q4 → 4 (75% smaller than FP16, 87.5% smaller than FP32)
+
+---
+
+Example: 1B Model
+
+Assume:
+- Parameters = 1B
+- Precision = FP32 (4 bytes)
+- Batch size = 8
+- Sequence length = 512
+- Hidden size = 1024
+- Layers = 24
+
+Weights:
+$$1,000,000,000 \times 4 = 4,000,000,000\ \text{bytes} \approx 4\ \text{GB}$$
+
+Activations:
+$$24 \times 8 \times 512 \times 1024 \times 4 \approx 384\ \text{MB}$$
+
+Total:
+$$4\ \text{GB} + 0.384\ \text{GB} \approx 4.38\ \text{GB}$$
+
+
+:::
+
+## Memory Requirements Table (FP16 Precision)
+
+| Model Size | Parameters | Weights Memory (FP16) | Typical Activation Memory* | Total Memory (Approx.) |
+|------------|------------|----------------------|---------------------------|------------------------|
+| **1B**     | 1B         | ~2 GB                | ~50-100 MB               | ~2.1 GB                |
+| **3B**     | 3B         | ~6 GB                | ~150-300 MB              | ~6.3 GB                |
+| **7B**     | 7B         | ~14 GB               | ~350-700 MB              | ~14.7 GB               |
+| **8B**     | 8B         | ~16 GB               | ~400-800 MB              | ~16.8 GB               |
+| **13B**    | 13B        | ~26 GB               | ~650-1.3 GB              | ~27.3 GB               |
+| **20B**    | 20B        | ~40 GB               | ~1-2 GB                  | ~42 GB                 |
+| **30B**    | 30B        | ~60 GB               | ~1.5-3 GB                | ~63 GB                 |
+| **65B**    | 65B        | ~130 GB              | ~3.25-6.5 GB             | ~136.5 GB              |
+| **70B**    | 70B        | ~140 GB              | ~3.5-7 GB                | ~147 GB                |
+| **120B**   | 120B       | ~240 GB              | ~6-12 GB                 | ~252 GB                |
+
+
+
 # When to Use Which Option
 
 Not sure which path to pick? Here’s the good news: **they all work** — and you can switch at any time.
@@ -331,6 +419,35 @@ There’s no single “best” choice — just pick what fits your system and co
 ---
 
 --DIVIDER--
+
+
+
+:::info{title="Info"}
+# OpenAI's GPT-OSS Models: Now Available for Local Use
+
+OpenAI recently released open-source versions of their models, known as **GPT-OSS**. These include two models like **gpt-oss-20b** and **gpt-oss-120b** that you can now run locally using Ollama.
+
+**What makes GPT-OSS special:**
+- **Fully open-weight** - you can download and modify them freely
+- **High performance** - built on OpenAI's latest architecture
+- **Local deployment** - run them on your own hardware with Ollama
+
+**Using GPT-OSS with Ollama:**
+```bash
+# Download the 20B model (requires ~16GB RAM)
+ollama pull gpt-oss:20b
+
+# Or the larger 120B model (requires ~60GB RAM)
+ollama pull gpt-oss:120b
+```
+
+**Reality check:** While these models offer cutting-edge capabilities, they require substantial hardware resources that are likely beyond most learning setups. The 20B model needs around 16GB of RAM, and the 120B model needs approximately 60GB - making cloud APIs more practical for most users in this course.
+
+However, if you have access to high-end workstations or servers, these models represent an exciting opportunity to run OpenAI-quality models completely locally and privately.
+:::
+
+---
+
 
 # Final Notes
 
