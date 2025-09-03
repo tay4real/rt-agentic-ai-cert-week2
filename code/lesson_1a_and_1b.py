@@ -13,7 +13,7 @@ from prompt_builder import build_prompt_from_config
 
 
 def invoke_llm(
-    prompt: str, model: str = "gpt-4o-mini", temperature: float = 0.0
+    prompt: str, model: str = "llama-3.1-8b-instant", temperature: float = 0.0
 ) -> Optional[str]:
     """Calls the LLM with a prompt and returns the response.
 
@@ -132,6 +132,6 @@ if __name__ == "__main__":
 
     # Define the prompt configuration key to use
     # You can change this to any key defined in your `prompt_config.yaml` file.
-    prompt_cfg_key = "summarization_prompt_cfg5"
+    prompt_cfg_key = "linkedin_post_prompt_cfg"
 
     main(prompt_config_key=prompt_cfg_key)
